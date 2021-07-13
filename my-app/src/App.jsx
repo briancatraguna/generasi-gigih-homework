@@ -4,6 +4,10 @@ import data from './data/albumData.js'
 
 console.log(process.env.REACT_APP_CLIENT_ID);
 
+function showAlert(){
+  alert(`You selected ${data.album.name} !`)
+}
+
 function App() {
   return (
     <div className="App">
@@ -14,26 +18,12 @@ function App() {
         <h1 class="topNav">Radio</h1>
       </div>
     
-      <div class="songsContainer">
-        <h1 class="songsTitle">Songs You Might Like</h1>
-        <div class="itemContainer">
-          <img src={data.album.images[0].url} alt="image"/>
-          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
-          <p class="artist">Queen</p>
-          <button class="selectButton">Select</button>
-        </div>
-        <div class="itemContainer">
-          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
-          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
-          <p class="artist">Queen</p>
-          <button class="selectButton">Select</button>
-        </div>
-        <div class="itemContainer">
-          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
-          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
-          <p class="artist">Queen</p>
-          <button class="selectButton">Select</button>
-        </div>
+      <h1 class="songsTitle">Songs You Might Like</h1>
+      <div class="itemContainer">
+        <img src={data.album.images[0].url} alt="image"/>
+        <p class="songTitle">{data.album.name}</p>
+        <p class="artist">{data.album.artists[0].name}</p>
+        <button class="selectButton" onClick={showAlert}>Select</button>
       </div>
     </div>
   );
