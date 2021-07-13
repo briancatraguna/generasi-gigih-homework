@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import 'regenerator-runtime/runtime';
+import data from './data/albumData.js'
 
 console.log(process.env.REACT_APP_CLIENT_ID);
 
@@ -17,7 +17,7 @@ function App() {
       <div class="songsContainer">
         <h1 class="songsTitle">Songs You Might Like</h1>
         <div class="itemContainer">
-          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
+          <img src={data.album.images[0].url} alt="image"/>
           <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
           <p class="artist">Queen</p>
           <button class="selectButton">Select</button>
