@@ -1,48 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
 import 'regenerator-runtime/runtime';
-import axios from 'axios';
-
-const SPOTIFY_TESTING_URL = "https://api.spotify.com/v1/search?q=Muse&type=track%2Cartist&market=US&limit=10&offset=5";
-
-const getSpotifySearch = async () => {
-  try {
-    const response = await axios.get(`${SPOTIFY_TESTING_URL}`,{
-      headers: {
-        'Authorization': process.env.REACT_APP_OAUTH_TOKEN,
-        'Accept': "application/json",
-        'Content-Type': "application/json"
-      }
-    })
-    const sampleResult = response.data.artists.items[0].id;
-    console.log(`Here's an example axios GET: ${sampleResult}`);
-  } catch(errors){
-    console.error(errors);
-  }
-}
-
-getSpotifySearch();
+import data from './data/albumData.js'
 
 console.log(process.env.REACT_APP_CLIENT_ID);
-console.log(process.env.REACT_APP_OAUTH_TOKEN);
+
+function showAlert(){
+  alert(`You selected ${data.album.name} !`)
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1 className="topNav">Music</h1>
+        <h1 className="topNav">Podcast</h1>
+        <h1 className="topNav">Live</h1>
+        <h1 className="topNav">Radio</h1>
+      </div>
+    
+      <h1 className="songsTitle">Songs you might like</h1>
+      <div className="itemContainer">
+        <img src={data.album.images[0].url} alt="image"/>
+        <p className="songTitle">{data.album.name}</p>
+        <p className="artist">{data.album.artists[0].name}</p>
+        <button className="selectButton" onClick={showAlert}>Select</button>
+      </div>
     </div>
   );
 }
