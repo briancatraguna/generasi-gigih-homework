@@ -1,4 +1,5 @@
-# Generasi Gigih Homework!
+# Generasi Gigih Homework - Frontend Engineering 🎡🎢🎆
+<img src="https://user-images.githubusercontent.com/32363208/125472904-fee7aea0-cc93-4e0f-bbda-7c9e0f55f6ef.png" height=200/>
 
 # Release 0.1.3
 
