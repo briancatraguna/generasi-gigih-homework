@@ -12,18 +12,18 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1 class="topNav">Music</h1>
-        <h1 class="topNav">Podcast</h1>
-        <h1 class="topNav">Live</h1>
-        <h1 class="topNav">Radio</h1>
+        <h1 className="topNav">Music</h1>
+        <h1 className="topNav">Podcast</h1>
+        <h1 className="topNav">Live</h1>
+        <h1 className="topNav">Radio</h1>
       </div>
     
-      <h1 class="songsTitle">Songs You Might Like</h1>
-      <div class="itemContainer">
+      <h1 className="songsTitle">Songs you might like</h1>
+      <div className="itemContainer">
         <img src={data.album.images[0].url} alt="image"/>
-        <p class="songTitle">{data.album.name}</p>
-        <p class="artist">{data.album.artists[0].name}</p>
-        <button class="selectButton" onClick={showAlert}>Select</button>
+        <p className="songTitle">{data.album.name}</p>
+        <p className="artist">{data.album.artists[0].name}</p>
+        <button className="selectButton" onClick={showAlert}>Select</button>
       </div>
     </div>
   );
