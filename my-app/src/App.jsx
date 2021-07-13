@@ -7,20 +7,34 @@ console.log(process.env.REACT_APP_CLIENT_ID);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1 class="topNav">Music</h1>
+        <h1 class="topNav">Podcast</h1>
+        <h1 class="topNav">Live</h1>
+        <h1 class="topNav">Radio</h1>
+      </div>
+    
+      <div class="songsContainer">
+        <h1 class="songsTitle">Songs You Might Like</h1>
+        <div class="itemContainer">
+          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
+          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
+          <p class="artist">Queen</p>
+          <button class="selectButton">Select</button>
+        </div>
+        <div class="itemContainer">
+          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
+          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
+          <p class="artist">Queen</p>
+          <button class="selectButton">Select</button>
+        </div>
+        <div class="itemContainer">
+          <img src="https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b"/>
+          <p class="songTitle">Bohemian Rhapsody (The Original Soundtrack)</p>
+          <p class="artist">Queen</p>
+          <button class="selectButton">Select</button>
+        </div>
+      </div>
     </div>
   );
 }
