@@ -1,7 +1,8 @@
 import './../src/App.css';
 import 'regenerator-runtime/runtime';
 import data from './data/albumData.js';
-import TopNavigationMenu from './components/TopNavigationMenu/index.js'
+import TopNavigationMenu from './components/TopNavigationMenu/index.jsx';
+import SectionTitle from './components/SectionTitle/index.jsx'
 
 console.log(process.env.REACT_APP_CLIENT_ID);
 
@@ -12,14 +13,12 @@ function showAlert(){
 function App() {
   return (
     <div className="App">
-      <div>
-        <TopNavigationMenu name="Music"/>
-        <TopNavigationMenu name="Podcast"/>
-        <TopNavigationMenu name="Live"/>
-        <TopNavigationMenu name="Radio"/>
-      </div>
+      <TopNavigationMenu name="Music"/>
+      <TopNavigationMenu name="Podcast"/>
+      <TopNavigationMenu name="Live"/>
+      <TopNavigationMenu name="Radio"/>
     
-      <h1 className="songsTitle">Songs you might like</h1>
+      <SectionTitle title="Songs you might like"/>
       <div className="itemContainer">
         <img src={data.album.images[0].url} alt="image"/>
         <p className="songTitle">{data.album.name}</p>

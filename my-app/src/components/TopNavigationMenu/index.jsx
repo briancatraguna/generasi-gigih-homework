@@ -7,7 +7,7 @@ class TopNavigationMenu extends React.Component {
     }
 
     render() {
-        return <h1 className = "topNav" > { this.props.name } < /h1>
+        return <h1 className = "topNav" > { this.props.name } </h1>
     }
 }
 
