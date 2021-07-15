@@ -1,0 +1,10 @@
+.topNav {
+    font-size: 20px;
+    margin: 20px;
+    color: #9d9d9d;
+    display: inline-block;
+}
+
+.topNav:hover {
+    color: #fcfcfc;
+}
