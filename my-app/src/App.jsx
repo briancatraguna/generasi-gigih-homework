@@ -17,12 +17,6 @@ function App() {
     
       <SectionTitle title="Songs you might like"/>
       <SongItem imgUrl={data.album.images[0].url} songTitle={data.album.name} artist={data.album.artists[0].name}/>
-      {/* <div className="itemContainer">
-                <img src={data.album.images[0].url} alt="image"/>
-                <p className="songTitle">{data.album.name}</p>
-                <p className="artist">{data.album.artists[0].name}</p>
-                <button className="selectButton" onClick={showAlert}>Select</button>
-            </div> */}
     </div>
   );
 }
