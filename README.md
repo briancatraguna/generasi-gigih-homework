@@ -16,3 +16,7 @@
 #### Screenshot
 
 <img src="https://user-images.githubusercontent.com/32363208/125472540-840f97c6-83ac-4c70-bc04-2c04efad1e92.png" width=750/>
+
+### Release 0.2.2
+
+Refactored the code into beautifully written React components!! 😊😊😊 
