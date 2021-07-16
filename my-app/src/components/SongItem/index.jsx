@@ -15,7 +15,9 @@ class SongItem extends React.Component {
         return <div className="itemContainer">
                 <img src={this.props.imgUrl} alt="image"/>
                 <p className="songTitle">{this.props.songTitle}</p>
-                <p className="artist">{this.props.artist}</p>
+                <a className="artist" href={this.props.artistLink}>{this.props.artist}</a>
+                <br></br>
+                {/* <p className="artist">{this.props.artist}</p> */}
                 <button className="selectButton" onClick={this.showAlert}>Select</button>
             </div>
     }
