@@ -23,11 +23,17 @@ img {
     color: #a6a6a6;
 }
 
+.artist:hover {
+    font-size: 15px;
+    color: #ffffff;
+}
+
 .songList {
     display: inline-block;
 }
 
 .selectButton {
+    margin-top: 7px;
     background-color: #1ed760;
     border: none;
     color: #010000;
@@ -39,6 +45,7 @@ img {
 }
 
 .selectButton:hover {
+    margin-top: 7px;
     background-color: #010000;
     border: 1px solid #1ed760;
     color: #1ed760;
