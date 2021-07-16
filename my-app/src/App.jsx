@@ -16,7 +16,12 @@ function App() {
       <TopNavigationMenu name="Radio"/>
     
       <SectionTitle title="Songs you might like"/>
-      <SongItem imgUrl={data.album.images[0].url} songTitle={data.album.name} artist={data.album.artists[0].name}/>
+      {data.map((item,index)=>{
+        return (
+          <SongItem imgUrl={item.album.images[0].url} songTitle={item.album.name} artist={item.album.artists[0].name}/>
+        )
+      })}
+
     </div>
   );
 }
