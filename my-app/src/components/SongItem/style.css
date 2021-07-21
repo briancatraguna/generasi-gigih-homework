@@ -1,21 +1,26 @@
 .itemContainer {
     display: inline-block;
     margin: 30px;
-    padding: 50px 30px 50px 30px;
+    width: 400px;
+    height: 420px;
     border-radius: 20px;
     text-align: center;
     background-color: #252525;
 }
 
 img {
+    margin-top: 30px;
     border-radius: 20px;
     width: 250px;
 }
 
 .songTitle {
+    margin-top: 10px;
     font-weight: bold;
     font-size: 15px;
     color: #ffffff;
+    word-wrap: break-word;
+    text-align: center;
 }
 
 .artist {
@@ -35,13 +40,14 @@ img {
 .selectButton {
     margin-top: 7px;
     background-color: #1ed760;
-    border: none;
+    border: 1px solid #010000;
     color: #010000;
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
     font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .selectButton:hover {
@@ -54,4 +60,5 @@ img {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
+    margin-bottom: 10px;
 }
