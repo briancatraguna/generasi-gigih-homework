@@ -28,3 +28,13 @@ Refactored the code into beautifully written React components!! 😊😊😊
 
 #### Screenshot
 <img src="https://user-images.githubusercontent.com/32363208/125990781-3d48ed4b-4527-4b45-bf2e-15cedae90435.png" width=750/>
+
+### Release 0.3.1
+1. Implemented a search bar
+2. Put client ID in .env
+3. Used the query in the input text to modify the endpoint in spotify API
+4. Looped through the json list in the results and put it in the props of SongItem
+
+#### Screenshot
+<img src="https://user-images.githubusercontent.com/32363208/126429222-74635b91-4661-4489-ab62-c11c8e3b6a70.png" width=750/>
+<img src="https://user-images.githubusercontent.com/32363208/126429263-18e24fb6-4a74-4dcb-a958-83b20935b8f4.png" width=750/>
