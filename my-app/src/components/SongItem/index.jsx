@@ -1,26 +1,33 @@
 import React from 'react';
+import { useState } from 'react';
 import './style.css';
 
-class SongItem extends React.Component {
-    constructor(props){
-        super(props);
-        this.showAlert = this.showAlert.bind(this)
+
+const SongItem = (props) => {
+
+    const [status,setStatus] = useState(false)
+
+    const showAlert = () => {
+        setStatus(!status)
+        console.log(status)
     }
 
-    showAlert(){
-        alert(`You selected ${this.props.songTitle} !`)
-      }
+    let button;
+    if (status == false){
+        button = <button className="selectButton" onClick={showAlert}>Select</button>
+    } else {
+        button = <button className="deselectButton" onClick={showAlert}>Deselect</button>
+    }
 
-    render(){
-        return <div className="itemContainer">
-                <img src={this.props.imgUrl} alt="image"/>
-                <p className="songTitle">{this.props.songTitle}</p>
-                <a className="artist" href={this.props.artistLink}>{this.props.artist}</a>
+    return (
+            <div className="itemContainer">
+                <img src={props.imgUrl} alt="image"/>
+                <p className="songTitle">{props.songTitle}</p>
+                <a className="artist" href={props.artistLink}>{props.artist}</a>
                 <br></br>
-                {/* <p className="artist">{this.props.artist}</p> */}
-                <button className="selectButton" onClick={this.showAlert}>Select</button>
+                {button}
             </div>
-    }
+    );
 }
 
 export default SongItem;
