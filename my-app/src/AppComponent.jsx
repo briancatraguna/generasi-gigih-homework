@@ -1,11 +1,9 @@
 import React from 'react';
-import data from './data/albumData.js';
+import { useState } from 'react';
 import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
 import LoginButton from './components/LoginButton/index.jsx';
 import axios from 'axios';
-
-
 
 
 class AppComponent extends React.Component{
@@ -13,16 +11,11 @@ class AppComponent extends React.Component{
         super(props);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
-        // window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
 
         const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
         let accessToken = urlSearchParams.get('access_token');
-
-        console.log(accessToken);
         
         this.state = {
-            isLogin: false,
             textInput: "",
             accessToken: accessToken,
             data: null
@@ -31,7 +24,6 @@ class AppComponent extends React.Component{
         if (accessToken!=null){
             console.log("Acces token length above 0")
             this.setState({
-                isLogin: true,
                 textInput: "",
                 accessToken: accessToken,
                 data: {}
