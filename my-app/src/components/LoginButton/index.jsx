@@ -20,17 +20,15 @@ class LoginButton extends React.Component {
         const error = urlSearchParams.get('error');
         if (!error) {
             let accessToken = urlSearchParams.get('access_token')
+            let tokenType = urlSearchParams.get('token_type')
+            let expiresIn = urlSearchParams.get('expires_in')
             console.log(accessToken);
         }
     }
 
     render(){
         return(
-            <a href={`${REDIRECT_URL}`}>
-                <button className="button" onClick={this.handleLogin}>
-                    LOGIN
-                </button>
-            </a>
+            <a href={`${REDIRECT_URL}`} onClick={this.handleLogin}>Login</a>
         );
     }
 }

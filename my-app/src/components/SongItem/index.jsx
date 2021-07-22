@@ -17,6 +17,7 @@ class SongItem extends React.Component {
                 <p className="songTitle">{this.props.songTitle}</p>
                 <a className="artist" href={this.props.artistLink}>{this.props.artist}</a>
                 <br></br>
+                {/* <p className="artist">{this.props.artist}</p> */}
                 <button className="selectButton" onClick={this.showAlert}>Select</button>
             </div>
     }

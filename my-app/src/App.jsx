@@ -2,6 +2,8 @@ import './../src/App.css';
 import 'regenerator-runtime/runtime';
 import AppComponent from './AppComponent.jsx';
 
+import axios from 'axios';
+
 
 function App() {
   return (
@@ -12,3 +14,5 @@ function App() {
 }
 
 export default App;
+
+
