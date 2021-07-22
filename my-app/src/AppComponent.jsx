@@ -7,11 +7,9 @@ import axios from 'axios';
 
 const AppComponent = () => {
     const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
-    let accessTokenRaw = urlSearchParams.get('access_token');
-    console.log(accessTokenRaw);
+    let accessToken = urlSearchParams.get('access_token');
 
     const [textInput,setTextInput] = useState("");
-    const [accessToken,setAccessToken] = useState(accessTokenRaw);
     const [data,setData] = useState(null);
 
     let listData;
