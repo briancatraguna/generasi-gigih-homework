@@ -1,20 +1,14 @@
 import React from 'react';
-import data from './data/albumData.js';
 import TopNavigationMenu from './components/TopNavigationMenu/index.jsx';
 import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
 import axios from 'axios';
-
-
-
 
 class AppComponent extends React.Component{
     constructor(props){
         super(props);
         this.handleSearch = this.handleSearch.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
-        // window.location.href = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
 
         const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
         let accessToken = urlSearchParams.get('access_token');
@@ -28,8 +22,7 @@ class AppComponent extends React.Component{
             data: null
         }
 
-        if (accessToken.length>0){
-            console.log("Acces token length above 0")
+        if (accessToken!=null){
             this.setState({
                 isLogin: true,
                 textInput: "",
@@ -43,14 +36,12 @@ class AppComponent extends React.Component{
     }
 
     handleSearch(){
-        //https://api.spotify.com/v1/search?q=queen&type=album&limit=30
         let query = this.state.textInput;
         let accessToken = `Bearer ${this.state.accessToken}`;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         console.log(accessToken)
         const getSpotifySearch = async() => {
             try {
-                //https://api.spotify.com/v1/search?q=queen&type=album&limit=30
                 const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
                     headers: {
                         'Authorization': accessToken
@@ -74,7 +65,7 @@ class AppComponent extends React.Component{
 
     render(){
         let listData;
-        const theLink = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
+        const theLink = `https://accounts.spotify.com/authorize?client_id=2d0b75886069404b84a9afa284b424bd&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
         if (this.state.data != null){
             listData = this.state.data.albums.items.map((item,index)=>{
                 return (
