@@ -17,6 +17,7 @@ const AppComponent = () => {
         listData = data.albums.items.map((item,index)=>{
             return (
                 <SongItem
+                    key = {item.id}
                     imgUrl = {item.images[0].url}
                     songTitle = {item.name}
                     artist = {item.artists[0].name}

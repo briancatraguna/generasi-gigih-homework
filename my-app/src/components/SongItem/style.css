@@ -62,3 +62,29 @@ img {
     font-size: 15px;
     margin-bottom: 10px;
 }
+
+.deselectButton {
+    margin-top: 7px;
+    background-color: #d71e1e;
+    border: 1px solid #010000;
+    color: #010000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.deselectButton:hover {
+    margin-top: 7px;
+    background-color: #010000;
+    border: 1px solid #d71e1e;
+    color: #d71e1e;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
