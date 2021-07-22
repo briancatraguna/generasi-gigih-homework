@@ -3,6 +3,7 @@ import data from './data/albumData.js';
 import TopNavigationMenu from './components/TopNavigationMenu/index.jsx';
 import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
+import LoginButton from './components/LoginButton/index.jsx';
 import axios from 'axios';
 
 
@@ -95,7 +96,7 @@ class AppComponent extends React.Component{
                 <TopNavigationMenu name="Live"/>
                 <TopNavigationMenu name="Radio"/>
 
-                <a href={theLink}>LOGIN</a>
+                <LoginButton></LoginButton>
                 
                 <SectionTitle title="Search your favorite albums!"/>
                 <br></br>
