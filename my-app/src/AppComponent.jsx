@@ -2,6 +2,7 @@ import React from 'react';
 import TopNavigationMenu from './components/TopNavigationMenu/index.jsx';
 import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
+import LoginButton from './components/LoginButton/index.jsx'
 import axios from 'axios';
 
 class AppComponent extends React.Component{
@@ -65,7 +66,7 @@ class AppComponent extends React.Component{
 
     render(){
         let listData;
-        const theLink = `https://accounts.spotify.com/authorize?client_id=2d0b75886069404b84a9afa284b424bd&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
+        const theLink = `https://accounts.spotify.com/authorize?client_id=2d0b75886069404b84a9afa284b424bd${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=http://localhost:3000/&scope=playlist-modify-private`
         if (this.state.data != null){
             listData = this.state.data.albums.items.map((item,index)=>{
                 return (
@@ -87,7 +88,7 @@ class AppComponent extends React.Component{
                 <TopNavigationMenu name="Live"/>
                 <TopNavigationMenu name="Radio"/>
 
-                <a href={theLink}>LOGIN</a>
+                <LoginButton></LoginButton>
                 
                 <SectionTitle title="Search your favorite albums!"/>
                 <br></br>
