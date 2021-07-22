@@ -5,48 +5,46 @@ import SongItem from './components/SongItem/index.jsx';
 import LoginButton from './components/LoginButton/index.jsx';
 import axios from 'axios';
 
+const AppComponent = () => {
+    const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
+    let accessTokenRaw = urlSearchParams.get('access_token');
+    console.log(accessTokenRaw);
 
-class AppComponent extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+    const [textInput,setTextInput] = useState("");
+    const [accessToken,setAccessToken] = useState(accessTokenRaw);
+    const [data,setData] = useState(null);
 
-        const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
-        let accessToken = urlSearchParams.get('access_token');
-        
-        this.state = {
-            textInput: "",
-            accessToken: accessToken,
-            data: null
-        }
-
-        if (accessToken!=null){
-            this.setState({
-                textInput: "",
-                accessToken: accessToken,
-                data: {}
-            })
-            console.log(this.state.accessToken)
-        }
-
-        
+    let listData;
+    if (data != null){
+        listData = data.albums.items.map((item,index)=>{
+            return (
+                <SongItem
+                    imgUrl = {item.images[0].url}
+                    songTitle = {item.name}
+                    artist = {item.artists[0].name}
+                    artistLink = {item.artists[0].href}
+                />
+            )
+        })
     }
 
-    handleSearch(){
-        let query = this.state.textInput;
-        let accessToken = `Bearer ${this.state.accessToken}`;
+    const handleChange = (e) => {
+        setTextInput(e.target.value);
+    }
+
+    const handleSearch = () => {
+        let query = textInput;
+        let accessTokenBearer = `Bearer ${accessToken}`;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
                 const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
                     headers: {
-                        'Authorization': accessToken
+                        'Authorization': accessTokenBearer
                     }
                 })
-                this.setState({
-                    data: response.data
-                })
+                setData(response.data);
+                console.log(response.data);
             } catch(error){
                 console.error(error);
             }
@@ -54,42 +52,19 @@ class AppComponent extends React.Component{
         getSpotifySearch();
     }
 
-    handleChange(e){
-        this.setState({textInput: e.target.value})
-    }
+    return(
+        <div className="App">
+            <LoginButton></LoginButton>
+            <SectionTitle title="Search your favorite albums!"/>
+            <br></br>
+            <input type="text" value={textInput} onChange={handleChange}></input>
+            <button onClick={handleSearch}>Search!</button>
+            <br></br>
 
-    render(){
-        let listData;
-        const theLink = `https://accounts.spotify.com/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&redirect_uri=http://localhost:3000/callback&scope=playlist-modify-private`
-        if (this.state.data != null){
-            listData = this.state.data.albums.items.map((item,index)=>{
-                return (
-                    <SongItem
-                    imgUrl = {item.images[0].url}
-                    songTitle = {item.name}
-                    artist = {item.artists[0].name}
-                    artistLink = {item.artists[0].href}
-                    />
-                )
-            })
-        }
-        return(
-            <div className="App">
+            {listData}
 
-                <LoginButton></LoginButton>
-                
-                <SectionTitle title="Search your favorite albums!"/>
-                <br></br>
-                <input type="text" value={this.state.textInput} onChange={this.handleChange}></input>
-                <button onClick={this.handleSearch}>Search!</button>
-                <br></br>
-
-                {listData}
-
-            </div>
-        )
-        
-    }
+        </div>
+    );
 }
 
 export default AppComponent;
