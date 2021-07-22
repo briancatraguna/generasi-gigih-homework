@@ -91,11 +91,7 @@ class AppComponent extends React.Component{
         }
         return(
             <div className="App">
-                <TopNavigationMenu name="Music"/>
-                <TopNavigationMenu name="Podcast"/>
-                <TopNavigationMenu name="Live"/>
-                <TopNavigationMenu name="Radio"/>
-
+                
                 <LoginButton></LoginButton>
                 
                 <SectionTitle title="Search your favorite albums!"/>
