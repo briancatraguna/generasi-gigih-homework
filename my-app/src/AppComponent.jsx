@@ -21,6 +21,7 @@ const AppComponent = () => {
                     songTitle = {item.name}
                     artist = {item.artists[0].name}
                     artistLink = {item.artists[0].href}
+                    id = {item.id}
                 />
             )
         })
@@ -42,7 +43,6 @@ const AppComponent = () => {
                     }
                 })
                 setData(response.data);
-                console.log(response.data);
             } catch(error){
                 console.error(error);
             }

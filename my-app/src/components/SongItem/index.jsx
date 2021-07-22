@@ -1,11 +1,15 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import './style.css';
 
 
 const SongItem = (props) => {
 
+    const [database,setDatabase] = useState([]);
+
     const showAlert = () => {
-        alert(`You selected ${props.songTitle}!`)
+        alert(`You selected ${props.songTitle}!`);
+        console.log(props.id);
     }
 
     return (
