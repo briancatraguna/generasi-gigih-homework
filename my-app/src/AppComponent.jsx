@@ -22,7 +22,6 @@ class AppComponent extends React.Component{
         }
 
         if (accessToken!=null){
-            console.log("Acces token length above 0")
             this.setState({
                 textInput: "",
                 accessToken: accessToken,
@@ -38,20 +37,16 @@ class AppComponent extends React.Component{
         let query = this.state.textInput;
         let accessToken = `Bearer ${this.state.accessToken}`;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
-        console.log(accessToken)
         const getSpotifySearch = async() => {
             try {
-                //https://api.spotify.com/v1/search?q=queen&type=album&limit=30
                 const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
                     headers: {
                         'Authorization': accessToken
                     }
                 })
-                console.log(response.data)
                 this.setState({
                     data: response.data
                 })
-                console.log(this.state.data)
             } catch(error){
                 console.error(error);
             }
@@ -77,8 +72,6 @@ class AppComponent extends React.Component{
                     />
                 )
             })
-            console.log("Rednering")
-            console.log(this.state.data)
         }
         return(
             <div className="App">
