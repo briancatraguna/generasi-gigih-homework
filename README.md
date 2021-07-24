@@ -46,3 +46,10 @@ Refactored the code into beautifully written React components!! 😊😊😊
 
 #### Screenshot
 <img src="https://user-images.githubusercontent.com/32363208/126691672-9ccc76f8-11bc-4606-9585-8ce49d2d99a5.png" width=750/>
+
+### Release 0.3.3
+1. Fixed previous bug on local database for selected albums
+2. Post request worked to the spotify REST API for creating new playlists!
+
+#### Screenshot
+<img src="https://user-images.githubusercontent.com/32363208/126876496-91f40dd0-e2e2-4927-820b-92773ccdc1b8.png" width=750/>
