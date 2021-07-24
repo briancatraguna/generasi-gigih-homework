@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     const [textInput,setTextInput] = useState("");
 
     const handleChange = (e) => {
-        setTextInput(e.target.value);
+        setTextInput(e.target.value)
     }
 
     const handleSearch = () => {
