@@ -10,10 +10,42 @@ const HomePage = () => {
     let accessToken = urlSearchParams.get('access_token');
 
     const [data,setData] = useState(null);
+    const [selectedList,setSelectedList] = useState([])
+
+    const getData = (data) => {
+        setData(data);
+    }
+
+    const pushToSelectedList = (id) => {
+        const currentList = selectedList;
+        currentList.push(id);
+        setSelectedList(currentList);
+    }
+
+    const deleteFromSelectedList = (id) => {
+        const currentList = selectedList;
+        for (var i = 0;i<selectedList.length;i++){
+            if (selectedList[i] === id){
+                currentList.splice(i,1);
+            }
+        }
+        setSelectedList(currentList);
+    }
+
+    const getStatus = (id) => {
+        let status = false;
+        for (var i = 0;i<selectedList.length;i++){
+            if (selectedList[i] === id){
+                status = true
+            }
+        }
+        return status;
+    }
 
     let listData;
     if (data != null){
         listData = data.albums.items.map((item,index)=>{
+            const status = getStatus(item.id)
             return (
                 <SongItem
                     key = {item.id}
@@ -22,13 +54,12 @@ const HomePage = () => {
                     artist = {item.artists[0].name}
                     artistLink = {item.artists[0].href}
                     id = {item.id}
+                    status = {status}
+                    pushToSelectedList = {pushToSelectedList}
+                    deleteFromSelectedList = {deleteFromSelectedList}
                 />
             )
         })
-    }
-
-    const getData = (data) => {
-        setData(data);
     }
 
     return(

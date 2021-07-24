@@ -5,11 +5,15 @@ import './style.css';
 
 const SongItem = (props) => {
 
-    const [status,setStatus] = useState(false)
+    const [status,setStatus] = useState(props.status)
 
     const showAlert = () => {
         setStatus(!status)
-        console.log(status)
+        if (!status){
+            props.pushToSelectedList(props.id);
+        } else {
+            props.deleteFromSelectedList(props.id);
+        }
     }
 
     let button;
