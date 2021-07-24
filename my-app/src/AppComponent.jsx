@@ -3,13 +3,13 @@ import { useState } from 'react';
 import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
 import LoginButton from './components/LoginButton/index.jsx';
+import SearchBar from './components/SearchBar/index.jsx';
 import axios from 'axios';
 
 const AppComponent = () => {
     const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
     let accessToken = urlSearchParams.get('access_token');
-
-    const [textInput,setTextInput] = useState("");
+    
     const [data,setData] = useState(null);
 
     let listData;
@@ -28,27 +28,8 @@ const AppComponent = () => {
         })
     }
 
-    const handleChange = (e) => {
-        setTextInput(e.target.value);
-    }
-
-    const handleSearch = () => {
-        let query = textInput;
-        let accessTokenBearer = `Bearer ${accessToken}`;
-        const BASE_URL = "https://api.spotify.com/v1/search?q="
-        const getSpotifySearch = async() => {
-            try {
-                const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
-                    headers: {
-                        'Authorization': accessTokenBearer
-                    }
-                })
-                setData(response.data);
-            } catch(error){
-                console.error(error);
-            }
-        }
-        getSpotifySearch();
+    const getData = (data) => {
+        setData(data);
     }
 
     return(
@@ -56,8 +37,7 @@ const AppComponent = () => {
             <LoginButton></LoginButton>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
-            <input type="text" value={textInput} onChange={handleChange}></input>
-            <button onClick={handleSearch}>Search!</button>
+            <SearchBar accessToken={accessToken} getData={getData}></SearchBar>
             <br></br>
 
             {listData}
