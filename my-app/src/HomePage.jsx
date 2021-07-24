@@ -4,13 +4,17 @@ import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
 import LoginButton from './components/LoginButton/index.jsx';
 import SearchBar from './components/SearchBar/index.jsx';
+import CreatePlaylistForm from './components/CreatePlaylistForm/index.jsx';
+import axios from 'axios';
 
 const HomePage = () => {
     const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
-    let accessToken = urlSearchParams.get('access_token');
+    const accessToken = urlSearchParams.get('access_token');
+    const accessTokenBearer = `Bearer ${accessToken}`;
 
     const [data,setData] = useState(null);
     const [selectedList,setSelectedList] = useState([])
+    const [userId,setUserId] = useState("")
 
     const getData = (data) => {
         setData(data);
@@ -42,6 +46,21 @@ const HomePage = () => {
         return status;
     }
 
+    const getCurrentUserId = async() => {
+        try {
+            const response = await axios.get("https://api.spotify.com/v1/me",{
+                headers: {
+                    'Authorization': accessTokenBearer,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            setUserId(response.data.id)
+        } catch(error){
+            console.error(error);
+        }
+    }
+
     let listData;
     if (data != null){
         listData = data.albums.items.map((item,index)=>{
@@ -62,9 +81,11 @@ const HomePage = () => {
         })
     }
 
+    getCurrentUserId();
     return(
         <div className="App">
             <LoginButton></LoginButton>
+            <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
             <SearchBar accessToken={accessToken} getData={getData}></SearchBar>
