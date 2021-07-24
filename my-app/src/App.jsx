@@ -1,14 +1,12 @@
 import './../src/App.css';
 import 'regenerator-runtime/runtime';
-import AppComponent from './AppComponent.jsx';
-
-import axios from 'axios';
+import HomePage from './HomePage.jsx';
 
 
 function App() {
   return (
     <div className="App">
-      <AppComponent></AppComponent>
+      <HomePage></HomePage>
     </div>
   );
 }

@@ -4,12 +4,11 @@ import SectionTitle from './components/SectionTitle/index.jsx';
 import SongItem from './components/SongItem/index.jsx';
 import LoginButton from './components/LoginButton/index.jsx';
 import SearchBar from './components/SearchBar/index.jsx';
-import axios from 'axios';
 
-const AppComponent = () => {
+const HomePage = () => {
     const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
     let accessToken = urlSearchParams.get('access_token');
-    
+
     const [data,setData] = useState(null);
 
     let listData;
@@ -46,4 +45,4 @@ const AppComponent = () => {
     );
 }
 
-export default AppComponent;
+export default HomePage;

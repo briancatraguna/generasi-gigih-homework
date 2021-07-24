@@ -15,7 +15,6 @@ const SearchBar = (props) => {
         const query = textInput;
         let accessTokenBearer = `Bearer ${props.accessToken}`;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
-        console.log(accessTokenBearer)
         const getSpotifySearch = async() => {
             try {
                 const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
