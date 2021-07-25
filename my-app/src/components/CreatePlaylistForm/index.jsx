@@ -25,6 +25,7 @@ const CreatePlaylistForm = (props) => {
                         'Content-Type': 'application/json'
                     }
                 })
+                console.log(response.data)
             } catch(error){
                 console.error(error);
             }
