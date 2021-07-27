@@ -17,7 +17,7 @@ const SearchBar = (props) => {
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
-                const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
+                const response = await axios.get(`${BASE_URL}${query}&type=track&limit=30`,{
                     headers: {
                         'Authorization': accessTokenBearer
                     }

@@ -63,16 +63,16 @@ const HomePage = () => {
 
     let listData;
     if (data != null){
-        listData = data.albums.items.map((item,index)=>{
-            const status = getStatus(item.id)
+        listData = data.tracks.items.map((item,index)=>{
+            const status = getStatus(item.uri)
             return (
                 <SongItem
                     key = {item.id}
-                    imgUrl = {item.images[0].url}
-                    songTitle = {item.name}
+                    imgUrl = {item.album.images[0].url}
+                    songTitle = {item.album.name}
                     artist = {item.artists[0].name}
                     artistLink = {item.artists[0].href}
-                    id = {item.id}
+                    id = {item.uri}
                     status = {status}
                     pushToSelectedList = {pushToSelectedList}
                     deleteFromSelectedList = {deleteFromSelectedList}
