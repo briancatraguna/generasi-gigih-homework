@@ -13,8 +13,8 @@ const HomePage = () => {
     const accessTokenBearer = `Bearer ${accessToken}`;
 
     const [data,setData] = useState(null);
-    const [selectedList,setSelectedList] = useState([])
-    const [userId,setUserId] = useState("")
+    const [selectedList,setSelectedList] = useState([]);
+    const [userId,setUserId] = useState("");
 
     const getData = (data) => {
         setData(data);
@@ -85,7 +85,7 @@ const HomePage = () => {
     return(
         <div className="App">
             <LoginButton></LoginButton>
-            <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer}></CreatePlaylistForm>
+            <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer} selectedTracks={selectedList}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
             <SearchBar accessToken={accessToken} getData={getData}></SearchBar>
