@@ -6,32 +6,44 @@ import axios from 'axios';
 const CreatePlaylistForm = (props) => {
 
     const userId = props.userId;
+    const accessTokenBearer = props.accessTokenBearer
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
 
-    const handleSubmit = () => {
-        const endpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
-        const submitPlaylist = () => {
-            try {
-                const response = axios.post(endpoint,{
-                    name: title,
-                    description: description,
-                    collaborative: false,
-                    public: false
-                },{
-                    headers: {
-                        'Authorization': props.accessTokenBearer,
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                })
-                console.log(response.data)
-            } catch(error){
-                console.error(error);
-            }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const endpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
+            const response = await axios.post(endpoint,{
+                name: title,
+                description: description,
+                collaborative: false,
+                public: false
+            },{
+                headers: {
+                    'Authorization': accessTokenBearer,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            const id = response.data.id;
+            await axios({
+                method: 'post',
+                url: `https://api.spotify.com/v1/playlists/${id}/tracks`,
+                data: {
+                  uris: props.selectedTracks
+                },
+                headers: {
+                  'Authorization': `${accessTokenBearer}`,
+                  "Accept": "application/json",
+                  "Content-Type": "application/json"
+                }
+              })
+        } catch(error){
+            console.error(error);
         }
-        submitPlaylist();
     }
+        
 
     const handleTitle = (e) => {
         setTitle(e.target.value);
@@ -40,11 +52,10 @@ const CreatePlaylistForm = (props) => {
     const handleDescription = (e) => {
         setDescription(e.target.value);
     }
-
     return (
         <div>
             <h3>Create Playlist</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label className="label">
                     Title:
                     <input type="text" onChange={handleTitle}></input>
@@ -53,7 +64,7 @@ const CreatePlaylistForm = (props) => {
                     Description:
                     <input type="text" onChange={handleDescription}></input>
                 </label>
-                <button onClick={handleSubmit}>Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );

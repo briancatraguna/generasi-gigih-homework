@@ -13,11 +13,11 @@ const SearchBar = (props) => {
 
     const handleSearch = () => {
         const query = textInput;
-        let accessTokenBearer = `Bearer ${props.accessToken}`;
+        let accessTokenBearer = props.accessToken;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
-                const response = await axios.get(`${BASE_URL}${query}&type=album&limit=30`,{
+                const response = await axios.get(`${BASE_URL}${query}&type=track&limit=30`,{
                     headers: {
                         'Authorization': accessTokenBearer
                     }
