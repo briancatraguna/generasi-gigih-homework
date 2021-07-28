@@ -6,11 +6,14 @@ import LoginButton from './components/LoginButton/index.jsx';
 import SearchBar from './components/SearchBar/index.jsx';
 import CreatePlaylistForm from './components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getToken } from './redux/token.js';
 
 const HomePage = () => {
-    const urlSearchParams = new URLSearchParams(window.location.hash.substring(1));
-    const accessToken = urlSearchParams.get('access_token');
-    const accessTokenBearer = `Bearer ${accessToken}`;
+    
+    const {accessTokenBearer} = useSelector((state) => state.token)
+    const dispatch = useDispatch();
+    dispatch(getToken());
 
     const [data,setData] = useState(null);
     const [selectedList,setSelectedList] = useState([]);
@@ -48,13 +51,13 @@ const HomePage = () => {
 
     const getCurrentUserId = async() => {
         try {
-            const response = await axios.get("https://api.spotify.com/v1/me",{
+            console.log(accessTokenBearer)
+            const response = await axios.get("https://api.spotify.com/v1/me?",{
                 headers: {
-                    'Authorization': accessTokenBearer,
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    Authorization: accessTokenBearer,
                 }
             })
+            console.log(response.data)
             setUserId(response.data.id)
         } catch(error){
             console.error(error);
@@ -88,7 +91,7 @@ const HomePage = () => {
             <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer} selectedTracks={selectedList}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
-            <SearchBar accessToken={accessToken} getData={getData}></SearchBar>
+            <SearchBar accessToken={accessTokenBearer} getData={getData}></SearchBar>
             <br></br>
 
             {listData}
