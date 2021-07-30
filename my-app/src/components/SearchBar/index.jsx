@@ -2,8 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import './style.css';
+import { useSelector } from 'react-redux';
 
 const SearchBar = (props) => {
+
+    const {accessTokenBearer} = useSelector((state) => state.token)
 
     const [textInput,setTextInput] = useState("");
 
@@ -13,7 +16,6 @@ const SearchBar = (props) => {
 
     const handleSearch = () => {
         const query = textInput;
-        let accessTokenBearer = props.accessToken;
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
