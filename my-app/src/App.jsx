@@ -1,6 +1,6 @@
 import './../src/App.css';
 import 'regenerator-runtime/runtime';
-import HomePage from './HomePage.jsx';
+import HomePage from './pages/HomePage.jsx';
 import configureStore from './redux/store';
 import { Provider } from 'react-redux';
 
