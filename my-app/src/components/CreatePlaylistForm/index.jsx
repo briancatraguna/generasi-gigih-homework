@@ -2,11 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import './style.css';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const CreatePlaylistForm = (props) => {
 
+    const {accessTokenBearer} = useSelector((state) => state.token)
+
     const userId = props.userId;
-    const accessTokenBearer = props.accessTokenBearer
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
 
@@ -34,7 +36,7 @@ const CreatePlaylistForm = (props) => {
                   uris: props.selectedTracks
                 },
                 headers: {
-                  'Authorization': `${accessTokenBearer}`,
+                  'Authorization': accessTokenBearer,
                   "Accept": "application/json",
                   "Content-Type": "application/json"
                 }

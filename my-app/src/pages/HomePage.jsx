@@ -1,19 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
-import SectionTitle from './components/SectionTitle/index.jsx';
-import SongItem from './components/SongItem/index.jsx';
-import LoginButton from './components/LoginButton/index.jsx';
-import SearchBar from './components/SearchBar/index.jsx';
-import CreatePlaylistForm from './components/CreatePlaylistForm/index.jsx';
+import SectionTitle from '../components/SectionTitle/index.jsx';
+import SongItem from '../components/SongItem/index.jsx';
+import LoginButton from '../components/LoginButton/index.jsx';
+import SearchBar from '../components/SearchBar/index.jsx';
+import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { getToken } from './redux/token.js';
+import { getToken } from '../redux/token.js';
 
 const HomePage = () => {
     
     const {accessTokenBearer} = useSelector((state) => state.token)
-    const dispatch = useDispatch();
-    dispatch(getToken());
 
     const [data,setData] = useState(null);
     const [selectedList,setSelectedList] = useState([]);
@@ -51,13 +49,11 @@ const HomePage = () => {
 
     const getCurrentUserId = async() => {
         try {
-            console.log(accessTokenBearer)
             const response = await axios.get("https://api.spotify.com/v1/me?",{
                 headers: {
                     Authorization: accessTokenBearer,
                 }
             })
-            console.log(response.data)
             setUserId(response.data.id)
         } catch(error){
             console.error(error);
@@ -87,7 +83,6 @@ const HomePage = () => {
     getCurrentUserId();
     return(
         <div className="App">
-            <LoginButton></LoginButton>
             <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer} selectedTracks={selectedList}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
