@@ -12,8 +12,6 @@ import { getToken } from '../redux/token.js';
 const HomePage = () => {
     
     const {accessTokenBearer} = useSelector((state) => state.token)
-    const dispatch = useDispatch();
-    dispatch(getToken());
 
     const [data,setData] = useState(null);
     const [selectedList,setSelectedList] = useState([]);
@@ -51,13 +49,11 @@ const HomePage = () => {
 
     const getCurrentUserId = async() => {
         try {
-            console.log(accessTokenBearer)
             const response = await axios.get("https://api.spotify.com/v1/me?",{
                 headers: {
                     Authorization: accessTokenBearer,
                 }
             })
-            console.log(response.data)
             setUserId(response.data.id)
         } catch(error){
             console.error(error);
@@ -87,7 +83,6 @@ const HomePage = () => {
     getCurrentUserId();
     return(
         <div className="App">
-            <LoginButton></LoginButton>
             <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer} selectedTracks={selectedList}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>

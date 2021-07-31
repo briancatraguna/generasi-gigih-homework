@@ -16,6 +16,7 @@ const SearchBar = (props) => {
 
     const handleSearch = () => {
         const query = textInput;
+        console.log(`Current access token state: ${accessTokenBearer}`)
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
