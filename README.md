@@ -53,3 +53,21 @@ Refactored the code into beautifully written React components!! 😊😊😊
 
 #### Screenshot
 <img src="https://user-images.githubusercontent.com/32363208/126876496-91f40dd0-e2e2-4927-820b-92773ccdc1b8.png" width=750/>
+
+### Release 0.4.1
+Refactored the accessToken to storing in react redux using createSlice
+
+### Release 0.4.2
+1. Added react router to project
+2. After login, the path will be to "/create-playlist"
+
+#### Screenshot
+```
+path="/"
+```
+<img src="https://user-images.githubusercontent.com/32363208/127746547-94c8ac24-7159-4e54-bfef-f5ac056138cd.png" width=750/>
+
+```
+path="/create-playlist"
+```
+<img src="https://user-images.githubusercontent.com/32363208/127746621-baa16628-1b94-4aee-b719-ac530228321b.png" width=750/>
