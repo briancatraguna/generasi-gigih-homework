@@ -65,7 +65,7 @@ Refactored the accessToken to storing in react redux using createSlice
 ```
 path="/"
 ```
-<img src="https://user-images.githubusercontent.com/32363208/127746547-94c8ac24-7159-4e54-bfef-f5ac056138cd.png" width=750/>
+<img src="https://user-images.githubusercontent.com/32363208/127746720-3a0325a5-6966-477b-b85c-4bbd75676674.png" width=750/>
 
 ```
 path="/create-playlist"
