@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './style.css';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const SearchBar = (props) => {
 
@@ -16,7 +17,6 @@ const SearchBar = (props) => {
 
     const handleSearch = () => {
         const query = textInput;
-        console.log(`Current access token state: ${accessTokenBearer}`)
         const BASE_URL = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
@@ -42,3 +42,7 @@ const SearchBar = (props) => {
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+    getData: PropTypes.function
+}

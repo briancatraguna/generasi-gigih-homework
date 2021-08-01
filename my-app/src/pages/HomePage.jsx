@@ -2,12 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import SectionTitle from '../components/SectionTitle/index.jsx';
 import SongItem from '../components/SongItem/index.jsx';
-import LoginButton from '../components/LoginButton/index.jsx';
 import SearchBar from '../components/SearchBar/index.jsx';
 import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { getToken } from '../redux/token.js';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
     
@@ -62,7 +60,7 @@ const HomePage = () => {
 
     let listData;
     if (data != null){
-        listData = data.tracks.items.map((item,index)=>{
+        listData = data.tracks.items.map((item)=>{
             const status = getStatus(item.uri)
             return (
                 <SongItem

@@ -1,10 +1,10 @@
 import './../src/App.css';
+import React from 'react';
 import 'regenerator-runtime/runtime';
 import HomePage from './pages/HomePage.jsx';
 import configureStore from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getToken } from './redux/token';

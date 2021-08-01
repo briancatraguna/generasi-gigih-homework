@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 
 const SectionTitle = (props) => {
     return (
@@ -8,3 +9,7 @@ const SectionTitle = (props) => {
 }
 
 export default SectionTitle;
+
+SectionTitle.propTypes = {
+    title: PropTypes.string
+}
