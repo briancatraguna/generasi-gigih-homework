@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './style.css';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const SearchBar = (props) => {
 
@@ -41,3 +42,7 @@ const SearchBar = (props) => {
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+    getData: PropTypes.function
+}
