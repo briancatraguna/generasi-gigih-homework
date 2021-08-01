@@ -71,3 +71,7 @@ path="/"
 path="/create-playlist"
 ```
 <img src="https://user-images.githubusercontent.com/32363208/127746621-baa16628-1b94-4aee-b719-ac530228321b.png" width=750/>
+
+### Release 0.4.3
+1. Fix any impure functions / mutable codes
+2. Fix the eslint problems -> Declaring PropTypes, deleting unused components
