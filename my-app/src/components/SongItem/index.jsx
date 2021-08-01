@@ -38,9 +38,9 @@ export default SongItem;
 
 SongItem.propTypes = {
     status: PropTypes.bool,
-    pushToSelectedList: PropTypes.func,
+    pushToSelectedList: PropTypes.function,
     id: PropTypes.string,
-    deleteFromSelectedList: PropTypes.func,
+    deleteFromSelectedList: PropTypes.function,
     imgUrl: PropTypes.string,
     songTitle: PropTypes.string,
     artistLink: PropTypes.string,
