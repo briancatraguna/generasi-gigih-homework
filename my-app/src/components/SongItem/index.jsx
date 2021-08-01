@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './style.css';
-
+import PropTypes from 'prop-types';
 
 const SongItem = (props) => {
 
@@ -35,3 +35,14 @@ const SongItem = (props) => {
 }
 
 export default SongItem;
+
+SongItem.propTypes = {
+    status: PropTypes.bool,
+    pushToSelectedList: PropTypes.func,
+    id: PropTypes.string,
+    deleteFromSelectedList: PropTypes.func,
+    imgUrl: PropTypes.string,
+    songTitle: PropTypes.string,
+    artistLink: PropTypes.string,
+    artist: PropTypes.string
+}
