@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './style.css';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const CreatePlaylistForm = (props) => {
 
@@ -73,3 +74,8 @@ const CreatePlaylistForm = (props) => {
 }
 
 export default CreatePlaylistForm;
+
+CreatePlaylistForm.propTypes = {
+    userId: PropTypes.string,
+    selectedTracks: PropTypes.array,
+}
