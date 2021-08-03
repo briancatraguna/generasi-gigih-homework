@@ -5,11 +5,13 @@ import SongItem from '../components/SongItem/index.jsx';
 import SearchBar from '../components/SearchBar/index.jsx';
 import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
+import './style.css';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
     
     const {accessTokenBearer} = useSelector((state) => state.token)
+    console.log(accessTokenBearer)
 
     const [data,setData] = useState(null);
     const [selectedList,setSelectedList] = useState([]);
@@ -68,7 +70,7 @@ const HomePage = () => {
                     imgUrl = {item.album.images[0].url}
                     songTitle = {item.album.name}
                     artist = {item.artists[0].name}
-                    artistLink = {item.artists[0].href}
+                    artistLink = {item.artists[0].external_urls.spotify}
                     id = {item.uri}
                     status = {status}
                     pushToSelectedList = {pushToSelectedList}
@@ -87,8 +89,10 @@ const HomePage = () => {
             <SearchBar accessToken={accessTokenBearer} getData={getData}></SearchBar>
             <br></br>
 
-            {listData}
-
+            <div className="grid-container">
+                {listData}
+            </div>
+            
         </div>
     );
 }
