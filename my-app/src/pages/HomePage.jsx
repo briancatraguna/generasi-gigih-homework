@@ -5,6 +5,7 @@ import SongItem from '../components/SongItem/index.jsx';
 import SearchBar from '../components/SearchBar/index.jsx';
 import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
+import './style.css';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
@@ -88,8 +89,10 @@ const HomePage = () => {
             <SearchBar accessToken={accessTokenBearer} getData={getData}></SearchBar>
             <br></br>
 
-            {listData}
-
+            <div className="grid-container">
+                {listData}
+            </div>
+            
         </div>
     );
 }
