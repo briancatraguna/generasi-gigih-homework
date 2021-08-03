@@ -1,21 +1,22 @@
 .itemContainer {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 30px;
     width: 400px;
-    height: 420px;
+    height: 350px;
     border-radius: 20px;
     text-align: center;
     background-color: #252525;
 }
 
 img {
-    margin-top: 30px;
     border-radius: 20px;
-    width: 250px;
+    width: 150px;
+    align-self: center;
 }
 
 .songTitle {
-    margin-top: 10px;
     font-weight: bold;
     font-size: 15px;
     color: #ffffff;
@@ -33,11 +34,9 @@ img {
     color: #ffffff;
 }
 
-.songList {
-    display: inline-block;
-}
-
 .selectButton {
+    width: 300px;
+    align-self: center;
     margin-top: 7px;
     background-color: #1ed760;
     border: 1px solid #010000;
@@ -47,10 +46,11 @@ img {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    margin-bottom: 10px;
 }
 
 .selectButton:hover {
+    width: 300px;
+    align-self: center;
     margin-top: 7px;
     background-color: #010000;
     border: 1px solid #1ed760;
@@ -60,10 +60,11 @@ img {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    margin-bottom: 10px;
 }
 
 .deselectButton {
+    width: 300px;
+    align-self: center;
     margin-top: 7px;
     background-color: #d71e1e;
     border: 1px solid #010000;
@@ -73,10 +74,11 @@ img {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    margin-bottom: 10px;
 }
 
 .deselectButton:hover {
+    width: 300px;
+    align-self: center;
     margin-top: 7px;
     background-color: #010000;
     border: 1px solid #d71e1e;
@@ -86,5 +88,4 @@ img {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    margin-bottom: 10px;
 }
