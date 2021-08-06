@@ -36,7 +36,7 @@ const SearchBar = (props) => {
 
     return(
         <div>
-            <TextField className="textField" type="text" value={textInput} onChange={handleChange}></TextField>
+            <TextField className="textField" label="Type in your album" type="text" value={textInput} onChange={handleChange}></TextField>
             <Button variant="contained" color="primary" onClick={handleSearch}>Search</Button>
         </div>
     );
