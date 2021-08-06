@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getToken } from './redux/token';
 import LoginPage from './pages/LoginPage.jsx';
+import { ThemeProvider } from '@material-ui/core';
 
 
 function App() {
@@ -40,24 +41,27 @@ function App() {
   }
 
   return (
-    <Provider store={configureStore}>
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/create-playlist">
-              <HomePage/>
-            </Route>
-            <Route exact path="/">
-              {loginComponent}
-            </Route>
-            <Route path="/callback">
-              {callbackComponent}
-            </Route>
-          </Switch>
+    <ThemeProvider>
+      <Provider store={configureStore}>
+        <Router>
+          <div className="App">
+            <Switch>
+              <Route exact path="/create-playlist">
+                <HomePage/>
+              </Route>
+              <Route exact path="/">
+                {loginComponent}
+              </Route>
+              <Route path="/callback">
+                {callbackComponent}
+              </Route>
+            </Switch>
           
-        </div>
-      </Router>
-    </Provider>
+          </div>
+        </Router>
+      </Provider>
+    </ThemeProvider>
+    
   );
 }
 
