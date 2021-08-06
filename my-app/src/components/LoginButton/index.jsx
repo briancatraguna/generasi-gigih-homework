@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React from 'react';
 import './style.css';
 
@@ -8,7 +9,7 @@ const LoginButton = () => {
 
     return (
         <a href={REDIRECT_URL}>
-            <button className="button">LOGIN</button>
+            <Button variant="contained" color="primary" className="button">Login</Button>
         </a>
     )
     

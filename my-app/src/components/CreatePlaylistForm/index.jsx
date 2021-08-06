@@ -4,6 +4,7 @@ import './style.css';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, TextField } from '@material-ui/core';
 
 const CreatePlaylistForm = (props) => {
 
@@ -59,15 +60,9 @@ const CreatePlaylistForm = (props) => {
         <div>
             <h3>Create Playlist</h3>
             <form onSubmit={handleSubmit}>
-                <label className="label">
-                    Title:
-                    <input type="text" onChange={handleTitle}></input>
-                </label>
-                <label className="label">
-                    Description:
-                    <input type="text" onChange={handleDescription}></input>
-                </label>
-                <button type="submit">Submit</button>
+                <TextField className="textField" variant="outlined" label="Title" onChange={handleTitle}/>
+                <TextField className="textField" variant="outlined" label="Description" onChange={handleDescription}/>
+                <Button type="submit" variant="contained" color="primary">Submit</Button>
             </form>
         </div>
     );

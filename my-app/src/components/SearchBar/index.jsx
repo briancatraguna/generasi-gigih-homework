@@ -4,6 +4,7 @@ import axios from 'axios';
 import './style.css';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, TextField } from '@material-ui/core';
 
 const SearchBar = (props) => {
 
@@ -35,8 +36,8 @@ const SearchBar = (props) => {
 
     return(
         <div>
-            <input type="text" value={textInput} onChange={handleChange}></input>
-            <button onClick={handleSearch}>Search!</button>
+            <TextField className="textField" label="Type in your album" type="text" value={textInput} onChange={handleChange}></TextField>
+            <Button variant="contained" color="primary" onClick={handleSearch}>Search</Button>
         </div>
     );
 }
