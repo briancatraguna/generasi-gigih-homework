@@ -75,3 +75,15 @@ path="/create-playlist"
 ### Release 0.4.3
 1. Fix any impure functions / mutable codes
 2. Fix the eslint problems -> Declaring PropTypes, deleting unused components
+
+### Release 0.5.1
+1. Used flexbox for the SongItem component
+2. Wrapped the data mapping with grid-container
+
+### Release 0.5.2
+1. Refactored login button to using material - ui component
+2. Refactored the create playlist form to using material - ui component
+3. Refactored the search bar to using material - ui component
+
+#### Screenshot
+<img src="https://user-images.githubusercontent.com/32363208/128551950-bc0eb530-168a-408d-90cd-6f04d1b0f826.png" width=750/>
