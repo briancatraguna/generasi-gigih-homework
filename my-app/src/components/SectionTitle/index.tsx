@@ -2,9 +2,13 @@ import React from 'react';
 import './style.css';
 import PropTypes from 'prop-types';
 
-const SectionTitle = (props) => {
+type Props = {
+    title: string
+}
+
+const SectionTitle = ({title}: Props) => {
     return (
-        <h1 className="songsTitle">{props.title}</h1>
+        <h1 className="songsTitle">{title}</h1>
     );
 }
 
