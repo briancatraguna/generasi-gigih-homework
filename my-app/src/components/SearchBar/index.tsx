@@ -1,32 +1,36 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import './style.css';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, TextField } from '@material-ui/core';
 
-const SearchBar = (props) => {
+type Props = {
+    getData: any
+}
 
-    const {accessTokenBearer} = useSelector((state) => state.token)
+const SearchBar = ({getData}: Props) => {
+
+    const {accessTokenBearer} = useSelector((state: any) => state.token)
 
     const [textInput,setTextInput] = useState("");
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         setTextInput(e.target.value);
     }
 
     const handleSearch = () => {
-        const query = textInput;
-        const BASE_URL = "https://api.spotify.com/v1/search?q="
+        const query: string = textInput;
+        const BASE_URL: string = "https://api.spotify.com/v1/search?q="
         const getSpotifySearch = async() => {
             try {
-                const response = await axios.get(`${BASE_URL}${query}&type=track&limit=30`,{
+                const response: AxiosResponse<any> = await axios.get(`${BASE_URL}${query}&type=track&limit=30`,{
                     headers: {
                         'Authorization': accessTokenBearer
                     }
                 })
-                props.getData(response.data);
+                getData(response.data);
             } catch(error){
                 console.error(error);
             }
@@ -45,5 +49,5 @@ const SearchBar = (props) => {
 export default SearchBar;
 
 SearchBar.propTypes = {
-    getData: PropTypes.function
+    getData: PropTypes.any
 }

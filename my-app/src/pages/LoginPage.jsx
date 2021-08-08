@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginButton from '../components/LoginButton/index.jsx';
+import LoginButton from '../components/LoginButton/index.tsx';
 
 const LoginPage = () => {
 

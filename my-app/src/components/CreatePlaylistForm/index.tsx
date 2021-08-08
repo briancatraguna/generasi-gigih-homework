@@ -1,24 +1,28 @@
 import React from 'react';
 import { useState } from 'react';
 import './style.css';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, TextField } from '@material-ui/core';
 
-const CreatePlaylistForm = (props) => {
+type Props = {
+    userId: string,
+    selectedTracks: Array<string>
+}
 
-    const {accessTokenBearer} = useSelector((state) => state.token)
+const CreatePlaylistForm = ({userId,selectedTracks}: Props) => {
 
-    const userId = props.userId;
+    const {accessTokenBearer} = useSelector((state: any) => state.token)
+
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         try {
-            const endpoint = `https://api.spotify.com/v1/users/${userId}/playlists`;
-            const response = await axios.post(endpoint,{
+            const endpoint: string = `https://api.spotify.com/v1/users/${userId}/playlists`;
+            const response: AxiosResponse<any> = await axios.post(endpoint,{
                 name: title,
                 description: description,
                 collaborative: false,
@@ -30,12 +34,12 @@ const CreatePlaylistForm = (props) => {
                     'Content-Type': 'application/json'
                 }
             })
-            const id = response.data.id;
+            const id: string = response.data.id;
             await axios({
                 method: 'post',
                 url: `https://api.spotify.com/v1/playlists/${id}/tracks`,
                 data: {
-                  uris: props.selectedTracks
+                  uris: selectedTracks
                 },
                 headers: {
                   'Authorization': accessTokenBearer,
@@ -49,11 +53,11 @@ const CreatePlaylistForm = (props) => {
     }
         
 
-    const handleTitle = (e) => {
+    const handleTitle = (e: React.ChangeEvent<any>) => {
         setTitle(e.target.value);
     }
 
-    const handleDescription = (e) => {
+    const handleDescription = (e: React.ChangeEvent<any>) => {
         setDescription(e.target.value);
     }
     return (

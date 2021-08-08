@@ -1,34 +1,34 @@
 import React from 'react';
 import { useState } from 'react';
-import SectionTitle from '../components/SectionTitle/index.jsx';
-import SongItem from '../components/SongItem/index.jsx';
-import SearchBar from '../components/SearchBar/index.jsx';
-import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
-import axios from 'axios';
+import SectionTitle from '../components/SectionTitle/index';
+import SongItem from '../components/SongItem/index';
+import SearchBar from '../components/SearchBar/index';
+import CreatePlaylistForm from '../components/CreatePlaylistForm/index';
+import axios, { AxiosResponse } from 'axios';
 import './style.css';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
     
-    const {accessTokenBearer} = useSelector((state) => state.token)
-    console.log(accessTokenBearer)
+    const {accessTokenBearer} = useSelector((state: any) => state.token)
 
-    const [data,setData] = useState(null);
-    const [selectedList,setSelectedList] = useState([]);
+    const initialData: any = null
+    const [data,setData] = useState(initialData);
+    const [selectedList,setSelectedList] = useState([""]);
     const [userId,setUserId] = useState("");
 
-    const getData = (data) => {
+    const getData = (data: any) => {
         setData(data);
     }
 
-    const pushToSelectedList = (id) => {
-        const currentList = selectedList;
+    const pushToSelectedList = (id: string) => {
+        const currentList: string[] = selectedList;
         currentList.push(id);
         setSelectedList(currentList);
     }
 
-    const deleteFromSelectedList = (id) => {
-        const currentList = selectedList;
+    const deleteFromSelectedList = (id: string) => {
+        const currentList: string[] = selectedList;
         for (var i = 0;i<selectedList.length;i++){
             if (selectedList[i] === id){
                 currentList.splice(i,1);
@@ -37,8 +37,8 @@ const HomePage = () => {
         setSelectedList(currentList);
     }
 
-    const getStatus = (id) => {
-        let status = false;
+    const getStatus = (id: string) => {
+        let status: boolean = false;
         for (var i = 0;i<selectedList.length;i++){
             if (selectedList[i] === id){
                 status = true
@@ -49,7 +49,7 @@ const HomePage = () => {
 
     const getCurrentUserId = async() => {
         try {
-            const response = await axios.get("https://api.spotify.com/v1/me?",{
+            const response: AxiosResponse<any> = await axios.get("https://api.spotify.com/v1/me?",{
                 headers: {
                     Authorization: accessTokenBearer,
                 }
@@ -62,7 +62,7 @@ const HomePage = () => {
 
     let listData;
     if (data != null){
-        listData = data.tracks.items.map((item)=>{
+        listData = data.tracks.items.map((item: any)=>{
             const status = getStatus(item.uri)
             return (
                 <SongItem
@@ -83,10 +83,10 @@ const HomePage = () => {
     getCurrentUserId();
     return(
         <div className="App">
-            <CreatePlaylistForm userId={userId} accessTokenBearer={accessTokenBearer} selectedTracks={selectedList}></CreatePlaylistForm>
+            <CreatePlaylistForm userId={userId} selectedTracks={selectedList}></CreatePlaylistForm>
             <SectionTitle title="Search your favorite albums!"/>
             <br></br>
-            <SearchBar accessToken={accessTokenBearer} getData={getData}></SearchBar>
+            <SearchBar getData={getData}></SearchBar>
             <br></br>
 
             <div className="grid-container">
