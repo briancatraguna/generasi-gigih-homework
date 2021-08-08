@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import SectionTitle from '../components/SectionTitle/index.tsx';
 import SongItem from '../components/SongItem/index.tsx';
-import SearchBar from '../components/SearchBar/index.jsx';
+import SearchBar from '../components/SearchBar/index.tsx';
 import CreatePlaylistForm from '../components/CreatePlaylistForm/index.jsx';
 import axios from 'axios';
 import './style.css';
