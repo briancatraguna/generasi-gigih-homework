@@ -6,3 +6,8 @@
     position: absolute;
     left: 100px;
 }
+
+.textField {
+    background-color: darkgray;
+    color: black;
+}
