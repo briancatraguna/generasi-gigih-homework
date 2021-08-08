@@ -1,7 +1,7 @@
 import './../src/App.css';
 import React from 'react';
 import 'regenerator-runtime/runtime';
-import HomePage from './pages/HomePage.jsx';
+import HomePage from './pages/HomePage.tsx';
 import configureStore from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
