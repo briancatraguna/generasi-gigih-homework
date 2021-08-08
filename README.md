@@ -87,3 +87,8 @@ path="/create-playlist"
 
 #### Screenshot
 <img src="https://user-images.githubusercontent.com/32363208/128551950-bc0eb530-168a-408d-90cd-6f04d1b0f826.png" width=750/>
+
+### Release 0.5.3
+1. Adding typescript to my app
+2. Refactor all the components to typescript
+3. Refactor homepage to typescript
