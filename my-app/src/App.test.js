@@ -25,6 +25,6 @@ for (let i = 0;i < data.length; i++){
     //songTitle
     expect(screen.getByText(data[i].album.name)).toBeInTheDocument();
     //artist
-    expect(screen.getByText(data[i].artists[0].name))
+    expect(screen.getByText(data[i].artists[0].name));
   });
 }
