@@ -129,3 +129,6 @@ for (let i = 0;i < data.length; i++){
   });
 }
 ```
+
+### Release 0.6.3
+Just deployed my app!🚀 Can access it through https://spotifynya-brian.vercel.app/
